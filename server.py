@@ -11,7 +11,8 @@ global adjektiver
 adjektiver = None
 
 list_path = 'resources/fullformsliste.txt'
-r = 0
+global count
+count = 0
 
 
 logging.basicConfig(filename="wordslog",
@@ -111,6 +112,7 @@ class WordResource:
     def on_get(self, req, resp):
         """Handles GET requests"""
         global adjektiver
+        global count
 
         if adjektiver == None:
             print("populating")
@@ -127,7 +129,7 @@ class WordResource:
         resp.status = falcon.HTTP_200  # This is the default status
         resp.content_type = falcon.MEDIA_TEXT  # Default is JSON, so override
         resp.text = f'{adj1}, {adj2} og {alder}'
-        r += 1
+        count += 1
         logging.info(f"Req from {req.remote_addr} got \"{resp.text}\"")
 
 
