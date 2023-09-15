@@ -130,6 +130,7 @@ class WordResource:
         resp.content_type = falcon.MEDIA_TEXT  # Default is JSON, so override
         resp.text = f'{adj1}, {adj2} og {alder}'
         count += 1
+        print(resp.text)
         logging.info(f"Req from {req.remote_addr} got \"{resp.text}\"")
 
 
