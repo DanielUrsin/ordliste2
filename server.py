@@ -113,11 +113,6 @@ class WordResource:
         """Handles GET requests"""
         global adjektiver
         global count
-
-        if adjektiver == None:
-            print("populating")
-            adjektiver = populate()
-            print("pupulated")
         try:
             alder = req.params.get("alder", 100)
         except:
@@ -141,6 +136,11 @@ app.add_route('/ord', WordResource())
 
 if __name__ == '__main__':
     with make_server('', 23232, app) as httpd:
+        if adjektiver == None:
+            print("populating")
+            adjektiver = populate()
+            print("pupulated")
+        
         print('Serving on port 23232...')
 
         # Serve until process is killed
